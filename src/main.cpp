@@ -4,7 +4,7 @@
 
 Array *crcFind(Array **sequence, Array **polynom);
 
-Array *crcCheck(Array **sequence, Array **polynom, Array **crc);
+void *crcCheck(Array **sequence, Array **polynom, Array **crc);
 
 void addZeros(Array **pArray, int zero_length);
 
@@ -73,7 +73,7 @@ Array *crcFind(Array **sequence, Array **polynom) {
     return reg;
 }
 
-Array *crcCheck(Array **sequence, Array **polynom, Array **crc) {
+void *crcCheck(Array **sequence, Array **polynom, Array **crc) {
     (*sequence)->extend(crc);
     Array *crcForValidate = crcFind(&(*sequence), &(*polynom));
     std::cout << &crcForValidate << "\n";

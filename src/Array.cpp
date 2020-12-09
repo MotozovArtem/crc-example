@@ -2,8 +2,8 @@
 // Created by rienel on 26.03.18.
 //
 
-#include "Array.h"
 #include <random>
+#include "Array.h"
 
 bool *Array::getArray() const {
     return array;
