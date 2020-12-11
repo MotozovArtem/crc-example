@@ -2,8 +2,8 @@
 // Created by rienel on 26.03.18.
 //
 
-#include <random>
-#include "Array.h"
+#include <cstdlib>
+#include "../include/Array.h"
 
 bool *Array::getArray() const {
     return array;
@@ -31,7 +31,7 @@ Array::Array(int length) {
     this->array = new bool[this->length];
     int i;
     for (i = 0; i < this->length; i++) {
-        this->array[i] = static_cast<bool>(random() % 2);
+        this->array[i] = static_cast<bool>(rand() % 2);
     }
 }
 
@@ -39,7 +39,7 @@ Array::Array(Array *pArray) {
     this->length = pArray->getLength();
     delete[] this->array;
     this->array = new bool[this->length];
-    for (int i = 0; i < this->length; ++i) {
+    for (int i = 0; i < this->length; i++) {
         this->array[i] = pArray->get(i);
     }
 }

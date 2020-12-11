@@ -1,32 +1,16 @@
 #include <iostream>
 #include <random>
-#include "Array.h"
+#include "../include/Array.h"
 
 Array *crcFind(Array **sequence, Array **polynom);
 
-void *crcCheck(Array **sequence, Array **polynom, Array **crc);
+void crcCheck(Array **sequence, Array **polynom, Array **crc);
 
 void addZeros(Array **pArray, int zero_length);
 
 int main() {
 //    bool polynom[] = {true, false, false, false, false, true, true}; // CRC-6-ITU
     Array *sequence = new Array(10);
-//    sequence->set(true, 0);
-//    sequence->set(true, 1);
-//    sequence->set(false, 2);
-//    sequence->set(true, 3);
-//    sequence->set(false, 4);
-//    sequence->set(true, 5);
-//    sequence->set(true, 6);
-//    sequence->set(false, 7);
-//    sequence->set(true, 8);
-//    sequence->set(true, 9);
-//    Array *polynom = new Array(5); // CRC-4-ITU
-//    polynom->set(true, 0);
-//    polynom->set(false, 1);
-//    polynom->set(false, 2);
-//    polynom->set(true, 3);
-//    polynom->set(true, 4);
     Array *polynom = new Array(7);
     polynom->set(true, 0);
     polynom->set(false, 1);
@@ -37,9 +21,6 @@ int main() {
     polynom->set(true, 6);
     std::cout << "Polynom=" << &polynom << "\n";
     std::cout << "Sequence=" << &sequence << "\n";
-//    sequence->extend(&polynom);
-//    std::cout << &sequence << "\n";
-//    std::cout << sequence->getLength() << "\n";
     Array *crc = crcFind(&sequence, &polynom);
     std::cout << "CRC=" << &crc << "\n";
     crcCheck(&sequence, &polynom, &crc);
@@ -73,7 +54,7 @@ Array *crcFind(Array **sequence, Array **polynom) {
     return reg;
 }
 
-void *crcCheck(Array **sequence, Array **polynom, Array **crc) {
+void crcCheck(Array **sequence, Array **polynom, Array **crc) {
     (*sequence)->extend(crc);
     Array *crcForValidate = crcFind(&(*sequence), &(*polynom));
     std::cout << &crcForValidate << "\n";
